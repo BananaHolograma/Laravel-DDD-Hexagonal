@@ -21,7 +21,6 @@ class Email extends StringValueObject
         return $this->value;
     }
 
-
     public function local(): StringValueObject
     {
         $parts = explode('@', $this->value());
