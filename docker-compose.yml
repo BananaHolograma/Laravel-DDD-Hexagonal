@@ -1,0 +1,124 @@
+version: "3.9"
+
+networks:
+  app-network:
+    driver: bridge
+
+x-services-volume: &services-volume
+  type: bind
+  source: ${APPLICATION_FOLDER}
+  target: /var/www/html
+
+services:
+  nginx:
+    build:
+      context: ./images/nginx
+      dockerfile: nginx.dockerfile
+      args:
+        - HOST_UID=${HOST_UID:-1001}
+        - HOST_GID=${HOST_GID:-1001}
+    container_name: "${CONTAINER_PREFIX}-nginx"
+    restart: unless-stopped
+    ports:
+      - "8085:${NGINX_INTERNAL_PORT}"
+      - 443:443
+    volumes:
+      - <<: *services-volume
+      - ./images/nginx/certs:/etc/nginx/ssl
+    depends_on:
+      - php
+    networks:
+      - app-network
+
+  php:
+    image: php-nginx-app
+    build:
+      context: ./images/php
+      dockerfile: php8.dockerfile
+      args:
+        - HOST_UID=${HOST_UID:-1001}
+        - HOST_GID=${HOST_GID:-1001}
+    container_name: "${CONTAINER_PREFIX}-php"
+    working_dir: /var/www/html
+    user: ${APP_USER}
+    volumes:
+      - <<: *services-volume
+      - ./images/php/config/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    command: ["php-fpm", "-y", "/usr/local/etc/php-fpm.conf", "-R"]
+    networks:
+      - app-network
+
+  scheduler:
+    image: php-nginx-app
+    container_name: "${CONTAINER_PREFIX}-scheduler-php"
+    depends_on:
+      - php
+    volumes:
+      - <<: *services-volume
+    command: ["/usr/local/bin/start"]
+    networks:
+      - app-network
+
+  db:
+    image: "mariadb:10.7.3"
+    container_name: "${CONTAINER_PREFIX}-db"
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./images/database/scripts:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: "${DB_NAME}"
+      MYSQL_USER: "${DB_USER}"
+      MYSQL_PASSWORD: "${DB_USER_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "${DB_ALLOW_EMPTY_PASSWORD}"
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    # command: ["mysqld", "--default-authentication-plugin=mysql_native_password"]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-p${DB_USER_PASSWORD}"]
+      retries: 3
+      timeout: 10s
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2.0
+    container_name: ${CONTAINER_PREFIX}-phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8082:${NGINX_INTERNAL_PORT}"
+    environment:
+      - PMA_HOST=db
+      - PMA_ARBITRARY=1
+      - PMA_PORT=${DB_PORT}
+      - HIDE_PHP_VERSION=true
+    links:
+      - db
+    networks:
+      - app-network
+
+  redis:
+    image: "redis:6.2.1-buster"
+    container_name: "${CONTAINER_PREFIX}-redis"
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    networks:
+      - app-network
+
+  mailhog:
+    image: "mailhog/mailhog:latest"
+    container_name: "${CONTAINER_PREFIX}-mailhog"
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - app-network
+
+volumes:
+  db-data:
+  redis-data:
