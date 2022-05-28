@@ -8,39 +8,18 @@ use InvalidArgumentException;
 
 class Money
 {
-    const USD = 'USD';
-    const EUR = 'EUR';
 
-    protected string $currency;
-    protected int $original;
+
     protected float $value;
     /**
      *
      */
-    public function __construct(int $value, ?string $currency = self::EUR)
-    {
-        if (!in_array($currency, $this->getAvailableCurrencies())) {
-            throw new InvalidArgumentException("Currency {$currency} should be a valid one: " . $this->getAvailableCurrencies() . implode(','));
-        }
+    public function __construct(
+        protected IntegerValueObject $original,
+        protected ?Currency $currency = new Currency('EUR')
+    ) {
 
-        $this->currency = $currency;
-        $this->original = $value;
-        $this->value = (float) round($value / 100, 2);
-    }
-
-    public function valueFormatted(): string
-    {
-        return number_format($this->value(), 2);
-    }
-
-    public function currency(): string
-    {
-        return $this->currency;
-    }
-
-    public function original(): int
-    {
-        return $this->original;
+        $this->value = (float) round($original->value() / 100, 2);
     }
 
     public function value(): float
@@ -48,8 +27,60 @@ class Money
         return $this->value;
     }
 
-    public function getAvailableCurrencies(): array
+    public function valueFormatted(): StringValueObject
     {
-        return [self::USD, self::EUR];
+        return new StringValueObject(number_format($this->value(), 2));
+    }
+
+    public function currency(): Currency
+    {
+        return $this->currency;
+    }
+
+    public function original(): IntegerValueObject
+    {
+        return $this->original;
+    }
+
+    public function isEqualsTo(Money $money): bool
+    {
+        return $this->original() === $money->original() && $this->hasSameCurrency($money);
+    }
+
+    private function hasSameCurrency(Money $money): bool
+    {
+        return trim(strtoupper($this->currency()->value())) === trim(strtoupper($money->currency()->value()));
+    }
+
+    public function add(Money $money): self
+    {
+        if (!$this->hasSameCurrency($money)) {
+            throw new InvalidArgumentException(
+                "You can only sum values with the same currency: {$this->currency()} !== {$money->currency()}."
+            );
+        }
+
+        return new self($this->original()->sum($money->original()), $this->currency());
+    }
+
+    public function subtract(Money $money): self
+    {
+        if (!$this->hasSameCurrency($money)) {
+            throw new InvalidArgumentException(
+                "You can only sum values with the same currency: {$this->currency()} !== {$money->currency()}."
+            );
+        }
+
+        return new self($this->original()->subtract($money->original()), $this->currency());
+    }
+
+    public function isNegative(): bool
+    {
+        return $this->original()->isNegative();
+    }
+
+    public function isPositive(): bool
+    {
+        return $this->original()->isPositive();
     }
 }

@@ -20,10 +20,17 @@ class StringValueObject
         return count(preg_split('//u', $this->value(), -1, PREG_SPLIT_NO_EMPTY));
     }
 
-    public function equals(StringValueObject $other_value): bool
+    public function equalsTo(StringValueObject $other_value): bool
     {
         return $this->value() === $other_value->value();
     }
+
+
+    public function notEqualsTo(StringValueObject $other_value): bool
+    {
+        return !$this->equalsTo($other_value);
+    }
+
 
     public function value(): string
     {
