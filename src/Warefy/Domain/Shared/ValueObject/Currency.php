@@ -4,22 +4,36 @@ declare(strict_types=1);
 
 namespace Warefy\Domain\Shared\ValueObject;
 
-use InvalidArgumentException;
+use Warefy\Domain\Shared\Enum\Currency as CurrencyEnum;
 
-class Currency extends StringValueObject
+class Currency
 {
-    const USD = 'USD';
-    const EUR = 'EUR';
-
-    public function __construct(protected string $value)
+    public function __construct(protected CurrencyEnum $value)
     {
-        if (!in_array($value, $this->getAvailableCurrencies())) {
-            throw new InvalidArgumentException("Currency {$value} should be a valid one: " . implode(',', $this->getAvailableCurrencies()));
-        }
+    }
+
+    public function value(): CurrencyEnum
+    {
+        return $this->value;
+    }
+
+    public function equalsTo(Currency $other): bool
+    {
+        return $this->value() === $other->value();
+    }
+
+    public function notEqualsTo(Currency $other): bool
+    {
+        return !$this->equalsTo($other);
+    }
+
+    public function is(CurrencyEnum $value): bool
+    {
+        return $this->value() === $value;
     }
 
     public function getAvailableCurrencies(): array
     {
-        return [self::USD, self::EUR];
+        return $this->value()->cases();
     }
 }

@@ -5,26 +5,28 @@ namespace Tests\Unit\Domain\Shared\ValueObject;
 
 use Tests\TestCase;
 use Warefy\Domain\Shared\ValueObject\Currency;
-use InvalidArgumentException;
-use Warefy\Domain\Shared\ValueObject\StringValueObject;
+use Warefy\Domain\Shared\Enum\Currency as CurrencyEnum;
 
 class CurrencyValueObjectTest extends TestCase
 {
 
     public function test_currency_value_object_instantiates_with_supported_currency()
     {
-        $currency = new Currency('EUR');
-        $this->assertEquals('EUR', $currency->value());
+        $eur = new Currency(CurrencyEnum::EUR);
+        $this->assertTrue($eur->is(CurrencyEnum::EUR));
 
-        $currency = new Currency('USD');
-        $this->assertEquals('USD', $currency->value());
-
-        $this->assertEquals(['USD', 'EUR'], $currency->getAvailableCurrencies());
+        $usd = new Currency(CurrencyEnum::USD);
+        $this->assertTrue($usd->is(CurrencyEnum::USD));
     }
 
-    public function test_currency_value_object_throws_invalid_argument_exception_when_currency_is_not_supported()
+    public function test_currency_value_object_comparison_operators()
     {
-        $this->expectException(InvalidArgumentException::class);
-        new Currency('NULL');
+        $eur = new Currency(CurrencyEnum::EUR);
+        $usd = new Currency(CurrencyEnum::USD);
+
+        $this->assertTrue($eur->equalsTo(new Currency(CurrencyEnum::EUR)));
+        $this->assertTrue($usd->equalsTo(new Currency(CurrencyEnum::USD)));
+
+        $this->assertTrue($eur->notEqualsTo(new Currency(CurrencyEnum::USD)));
     }
 }

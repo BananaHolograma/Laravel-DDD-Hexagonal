@@ -1,5 +1,5 @@
 #PHP BASE IMAGE FOR MULTI STAGING
-FROM php:8.0.19-fpm-alpine3.15
+FROM php:8.1-fpm-alpine3.16
 
 ARG HOST_UID
 ARG HOST_GID

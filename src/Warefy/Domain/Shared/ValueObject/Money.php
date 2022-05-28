@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Warefy\Domain\Shared\ValueObject;
 
 use InvalidArgumentException;
+use Warefy\Domain\Shared\Enum\Currency as CurrencyEnum;
 
 class Money
 {
@@ -14,7 +15,7 @@ class Money
         protected IntegerValueObject $original,
         protected ?Currency $currency = null
     ) {
-        $this->currency = $currency ?? new Currency('EUR');
+        $this->currency = $currency ?? new Currency(CurrencyEnum::EUR);
         $this->amount = (float) round($original->value() / 100, 2);
     }
 
