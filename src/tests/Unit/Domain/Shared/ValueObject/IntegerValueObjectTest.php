@@ -3,7 +3,9 @@
 
 namespace Tests\Unit\Domain\Shared\ValueObject;
 
+use InvalidArgumentException;
 use Tests\TestCase;
+use TypeError;
 use Warefy\Domain\Shared\ValueObject\IntegerValueObject;
 
 class IntegerValueObjectTest extends TestCase
@@ -41,5 +43,12 @@ class IntegerValueObjectTest extends TestCase
 
         $this->assertEquals($int_value->sum(new IntegerValueObject(10))->value(), 110);
         $this->assertEquals($int_value->subtract(new IntegerValueObject(101))->value(), -1);
+    }
+
+    public function test_integer_value_object_throws_type_error_when_value_is_not_int()
+    {
+        $this->expectException(TypeError::class);
+
+        new IntegerValueObject("not an integer");
     }
 }

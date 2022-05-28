@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Warefy\Domain\Shared\ValueObject;
 
+use InvalidArgumentException;
 
 class StringValueObject
 {
+
     public function __construct(protected string $value)
     {
     }
@@ -39,5 +41,15 @@ class StringValueObject
     public function count(): int
     {
         return count(preg_split('//u', $this->value(), -1, PREG_SPLIT_NO_EMPTY));
+    }
+
+    public function toLowerCase(): string
+    {
+        return mb_strtolower($this->value());
+    }
+
+    public function toUpperCase(): string
+    {
+        return mb_strtoupper($this->value());
     }
 }
