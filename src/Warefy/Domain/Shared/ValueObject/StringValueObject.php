@@ -25,7 +25,7 @@ class StringValueObject
 
     public function equalsTo(StringValueObject $other): bool
     {
-        return $this->value() === $other->value();
+        return $this->sanitized() === $other->sanitized();
     }
 
 
@@ -45,11 +45,11 @@ class StringValueObject
 
     public function toLowerCase(): string
     {
-        return mb_strtolower($this->value());
+        return mb_strtolower($this->sanitized());
     }
 
     public function toUpperCase(): string
     {
-        return mb_strtoupper($this->value());
+        return mb_strtoupper($this->sanitized());
     }
 }

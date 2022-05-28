@@ -12,9 +12,9 @@ class Money
 
     public function __construct(
         protected IntegerValueObject $original,
-        protected ?Currency $currency = new Currency('EUR')
+        protected ?Currency $currency = null
     ) {
-
+        $this->currency = $currency ?? new Currency('EUR');
         $this->amount = (float) round($original->value() / 100, 2);
     }
 
@@ -40,12 +40,17 @@ class Money
 
     public function isEqualsTo(Money $money): bool
     {
-        return $this->original() === $money->original() && $this->hasSameCurrency($money);
+        return $this->original()->equalsTo($money->original()) && $this->hasSameCurrency($money);
+    }
+
+    public function notEqualsTo(Money $money): bool
+    {
+        return !$this->isEqualsTo($money);
     }
 
     private function hasSameCurrency(Money $money): bool
     {
-        return trim(strtoupper($this->currency()->value())) === trim(strtoupper($money->currency()->value()));
+        return $this->currency()->equalsTo($money->currency());
     }
 
     public function add(Money $money): self
@@ -63,7 +68,7 @@ class Money
     {
         if (!$this->hasSameCurrency($money)) {
             throw new InvalidArgumentException(
-                "You can only sum values with the same currency: {$this->currency()} !== {$money->currency()}."
+                "You can only subtract values with the same currency: {$this->currency()} !== {$money->currency()}."
             );
         }
 
