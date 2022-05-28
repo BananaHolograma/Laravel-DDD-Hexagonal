@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Tests\Unit\Domain\Shared\ValueObject;
+namespace Tests\Unit\Domain\Shared\ValueObject\Generic;
 
 use Tests\TestCase;
 use TypeError;
-use Warefy\Domain\Shared\ValueObject\IntegerValueObject;
+use Warefy\Domain\Shared\ValueObject\Generic\IntegerValueObject;
 
 class IntegerValueObjectTest extends TestCase
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Warefy\Domain\Shared\ValueObject;
+namespace Warefy\Domain\Shared\ValueObject\Generic;
 
 
 class IntegerValueObject
@@ -49,6 +49,11 @@ class IntegerValueObject
     public function subtract(IntegerValueObject $other): self
     {
         return new self($this->value() - $other->value());
+    }
+
+    public function multiply(IntegerValueObject $other): self
+    {
+        return new self($this->value() * $other->value());
     }
 
     public function isPositive(): bool

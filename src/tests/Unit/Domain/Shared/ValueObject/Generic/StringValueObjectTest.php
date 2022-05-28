@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Tests\Unit\Domain\Shared\ValueObject;
+namespace Tests\Unit\Domain\Shared\ValueObject\Generic;
 
 use Tests\TestCase;
-use Warefy\Domain\Shared\ValueObject\StringValueObject;
+use Warefy\Domain\Shared\ValueObject\Generic\StringValueObject;
 
 class StringValueObjectTest extends TestCase
 {

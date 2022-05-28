@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Warefy\Domain\Shared\ValueObject;
+namespace Warefy\Domain\Shared\ValueObject\Generic;
 
 use InvalidArgumentException;
 
@@ -32,6 +32,11 @@ class StringValueObject
     public function notEqualsTo(StringValueObject $other): bool
     {
         return !$this->equalsTo($other);
+    }
+
+    public function isEmpty(): bool
+    {
+        return empty($this->value());
     }
 
     /** Multi-byte character support

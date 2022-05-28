@@ -1,11 +1,11 @@
 <?php
 
 
-namespace Tests\Unit\Domain\Shared\ValueObject;
+namespace Tests\Unit\Domain\Shared\ValueObject\Money;
 
 use Tests\TestCase;
-use Warefy\Domain\Shared\ValueObject\Currency;
 use Warefy\Domain\Shared\Enum\Currency as CurrencyEnum;
+use Warefy\Domain\Shared\ValueObject\Money\Currency;
 
 class CurrencyValueObjectTest extends TestCase
 {

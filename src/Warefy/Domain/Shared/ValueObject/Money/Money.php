@@ -2,31 +2,34 @@
 
 declare(strict_types=1);
 
-namespace Warefy\Domain\Shared\ValueObject;
+namespace Warefy\Domain\Shared\ValueObject\Money;
 
 use InvalidArgumentException;
 use Warefy\Domain\Shared\Enum\Currency as CurrencyEnum;
+use Warefy\Domain\Shared\ValueObject\Generic\IntegerValueObject;
+use Warefy\Domain\Shared\ValueObject\Generic\StringValueObject;
+use Warefy\Domain\Shared\ValueObject\Number\Real;
 
 class Money
 {
-    protected float $amount;
+    protected Real $amount;
 
     public function __construct(
         protected IntegerValueObject $original,
         protected ?Currency $currency = null
     ) {
         $this->currency = $currency ?? new Currency(CurrencyEnum::EUR);
-        $this->amount = (float) round($original->value() / 100, 2);
+        $this->amount = new Real((float) round($original->value() / 100, 2));
     }
 
-    public function amount(): float
+    public function amount(): Real
     {
         return $this->amount;
     }
 
     public function formatted(): StringValueObject
     {
-        return new StringValueObject(number_format($this->amount(), 2));
+        return new StringValueObject(number_format($this->amount()->value(), 2));
     }
 
     public function currency(): Currency
