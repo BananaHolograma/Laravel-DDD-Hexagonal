@@ -8,28 +8,24 @@ use InvalidArgumentException;
 
 class Money
 {
+    protected float $amount;
 
-
-    protected float $value;
-    /**
-     *
-     */
     public function __construct(
         protected IntegerValueObject $original,
         protected ?Currency $currency = new Currency('EUR')
     ) {
 
-        $this->value = (float) round($original->value() / 100, 2);
+        $this->amount = (float) round($original->value() / 100, 2);
     }
 
-    public function value(): float
+    public function amount(): float
     {
-        return $this->value;
+        return $this->amount;
     }
 
     public function valueFormatted(): StringValueObject
     {
-        return new StringValueObject(number_format($this->value(), 2));
+        return new StringValueObject(number_format($this->amount(), 2));
     }
 
     public function currency(): Currency

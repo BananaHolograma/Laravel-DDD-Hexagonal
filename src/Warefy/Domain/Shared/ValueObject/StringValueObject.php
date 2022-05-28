@@ -11,13 +11,14 @@ class StringValueObject
     {
     }
 
-    /** Multi-byte character support
-     * 
-     * @return int
-     */
-    public function count(): int
+    public function value(): string
     {
-        return count(preg_split('//u', $this->value(), -1, PREG_SPLIT_NO_EMPTY));
+        return $this->value;
+    }
+
+    public function sanitized(): string
+    {
+        return trim(strip_tags($this->value()));
     }
 
     public function equalsTo(StringValueObject $other_value): bool
@@ -31,9 +32,12 @@ class StringValueObject
         return !$this->equalsTo($other_value);
     }
 
-
-    public function value(): string
+    /** Multi-byte character support
+     * 
+     * @return int
+     */
+    public function count(): int
     {
-        return $this->value;
+        return count(preg_split('//u', $this->value(), -1, PREG_SPLIT_NO_EMPTY));
     }
 }
