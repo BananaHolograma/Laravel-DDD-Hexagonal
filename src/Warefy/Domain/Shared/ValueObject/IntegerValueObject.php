@@ -16,39 +16,39 @@ class IntegerValueObject
         return $this->value;
     }
 
-    public function equals(IntegerValueObject $other_value): bool
+    public function equalsTo(IntegerValueObject $other): bool
     {
-        return $this->value() === $other_value;
+        return $this->value() === $other->value();
     }
 
-    public function isBiggerThan(IntegerValueObject $other_value): bool
+    public function isBiggerThan(IntegerValueObject $other): bool
     {
-        return $this->value() > $other_value;
+        return $this->value() > $other->value();
     }
 
-    public function isLessThan(IntegerValueObject $other_value): bool
+    public function isLessThan(IntegerValueObject $other): bool
     {
-        return $this->value() < $other_value->value();
+        return $this->value() < $other->value();
     }
 
-    public function isBiggerThanOrEquals(IntegerValueObject $other_value): bool
+    public function isBiggerThanOrEquals(IntegerValueObject $other): bool
     {
-        return $this->value() >= $other_value->value();
+        return $this->value() >= $other->value();
     }
 
-    public function isLessThanOrEquals(IntegerValueObject $other_value): bool
+    public function isLessThanOrEquals(IntegerValueObject $other): bool
     {
-        return $this->value() <= $other_value->value();
+        return $this->value() <= $other->value();
     }
 
-    public function sum(IntegerValueObject $other_value): self
+    public function sum(IntegerValueObject $other): self
     {
-        return new self($this->value() + $other_value->value());
+        return new self($this->value() + $other->value());
     }
 
-    public function subtract(IntegerValueObject $other_value): self
+    public function subtract(IntegerValueObject $other): self
     {
-        return new self($this->value() - $other_value->value());
+        return new self($this->value() - $other->value());
     }
 
     public function isPositive(): bool

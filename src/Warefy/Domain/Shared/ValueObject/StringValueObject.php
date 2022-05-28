@@ -21,15 +21,15 @@ class StringValueObject
         return trim(strip_tags($this->value()));
     }
 
-    public function equalsTo(StringValueObject $other_value): bool
+    public function equalsTo(StringValueObject $other): bool
     {
-        return $this->value() === $other_value->value();
+        return $this->value() === $other->value();
     }
 
 
-    public function notEqualsTo(StringValueObject $other_value): bool
+    public function notEqualsTo(StringValueObject $other): bool
     {
-        return !$this->equalsTo($other_value);
+        return !$this->equalsTo($other);
     }
 
     /** Multi-byte character support
