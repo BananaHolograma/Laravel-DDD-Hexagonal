@@ -3,7 +3,6 @@
 
 namespace Tests\Unit\Domain\Shared\ValueObject;
 
-use InvalidArgumentException;
 use Tests\TestCase;
 use TypeError;
 use Warefy\Domain\Shared\ValueObject\IntegerValueObject;

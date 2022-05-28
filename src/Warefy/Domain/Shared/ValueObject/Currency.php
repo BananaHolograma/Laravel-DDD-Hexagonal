@@ -14,7 +14,7 @@ class Currency extends StringValueObject
     public function __construct(protected string $value)
     {
         if (!in_array($value, $this->getAvailableCurrencies())) {
-            throw new InvalidArgumentException("Currency {$value} should be a valid one: " . $this->getAvailableCurrencies() . implode(','));
+            throw new InvalidArgumentException("Currency {$value} should be a valid one: " . implode(',', $this->getAvailableCurrencies()));
         }
     }
 

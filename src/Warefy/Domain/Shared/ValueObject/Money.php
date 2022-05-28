@@ -23,7 +23,7 @@ class Money
         return $this->amount;
     }
 
-    public function valueFormatted(): StringValueObject
+    public function formatted(): StringValueObject
     {
         return new StringValueObject(number_format($this->amount(), 2));
     }
