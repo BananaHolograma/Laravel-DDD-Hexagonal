@@ -12,6 +12,8 @@ class UUID extends StringValueObject
     public function __construct(protected string $value)
     {
         $this->ensureIsValidUuid($value);
+
+        parent::__construct($value);
     }
 
     public static function generate(): self

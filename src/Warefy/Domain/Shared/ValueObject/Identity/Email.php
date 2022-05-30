@@ -12,8 +12,10 @@ class Email extends StringValueObject
     public function __construct(protected string $value)
     {
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidArgumentException("The email {$value} is bad formatted.");
+            throw new InvalidArgumentException("The email $value is bad formatted.");
         }
+
+        parent::__construct($value);
     }
 
     public function value(): string

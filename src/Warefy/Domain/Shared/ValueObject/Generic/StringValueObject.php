@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Warefy\Domain\Shared\ValueObject\Generic;
 
-use InvalidArgumentException;
-
 class StringValueObject
 {
-
     public function __construct(protected string $value)
     {
     }
@@ -40,7 +37,7 @@ class StringValueObject
     }
 
     /** Multi-byte character support
-     * 
+     *
      * @return int
      */
     public function count(): int

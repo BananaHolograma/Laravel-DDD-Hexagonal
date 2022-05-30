@@ -1,9 +1,7 @@
 <?php
 
-
 namespace Tests\Unit\Domain\Shared\ValueObject\Identity;
 
-use InvalidArgumentException;
 use Tests\TestCase;
 use Warefy\Domain\Shared\ValueObject\Identity\Name;
 
