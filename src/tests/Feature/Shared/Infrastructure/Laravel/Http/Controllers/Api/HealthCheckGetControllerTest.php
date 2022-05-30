@@ -10,7 +10,7 @@ class HealthCheckGetControllerTest extends TestCase
     /**
      * @test
      */
-    public function health_check_endpoint_returns_an_http_ok_status(): void
+    public function it_should_returns_an_http_ok_status(): void
     {
         $this->getJson(route('api.health-check'))->assertOk();
     }
