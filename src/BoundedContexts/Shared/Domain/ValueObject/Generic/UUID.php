@@ -21,6 +21,7 @@ class UUID extends StringValueObject
         return new static(RamseyUuid::uuid4()->toString());
     }
 
+    /** @throws InvalidArgumentException */
     private function ensureIsValidUUID(string $id): void
     {
         if (!RamseyUuid::isValid($id)) {

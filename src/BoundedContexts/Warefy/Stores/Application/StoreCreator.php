@@ -13,9 +13,9 @@ class StoreCreator {
     {
     }
 
-    public function __invoke(string $id, string $name, string $url): void
+    public function __invoke(CreateStoreDTO $request): void
     {
-        $store = new Store($id, $name, $url);
+        $store = new Store($request->id(), $request->name(), $request->url());
 
         $this->repository->save($store);
     }

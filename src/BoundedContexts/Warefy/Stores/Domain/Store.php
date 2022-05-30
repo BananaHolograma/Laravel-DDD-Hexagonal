@@ -2,21 +2,23 @@
 
 namespace Warefy\Stores\Domain;
 
+use Warefy\Stores\Domain\ValueObject\StoreId;
+
 class Store
 {
     /**
-     * @param string $id
+     * @param StoreId $id
      * @param string $name
      * @param string $url
      */
-    public function __construct(protected string $id, protected string $name, protected string $url)
+    public function __construct(protected StoreId $id, protected string $name, protected string $url)
     {
     }
 
     /**
      * @return string
      */
-    public function id(): string
+    public function id(): StoreId
     {
         return $this->id;
     }
