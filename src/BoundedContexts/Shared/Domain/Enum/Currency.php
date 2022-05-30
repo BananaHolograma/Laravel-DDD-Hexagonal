@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Warefy\Shared\Domain\Enum;
+namespace Shared\Domain\Enum;
 
 enum Currency
 {

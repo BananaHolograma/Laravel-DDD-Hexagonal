@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Warefy\Shared\Domain\ValueObject\Money;
+namespace Shared\Domain\ValueObject\Money;
 
-use Warefy\Shared\Domain\Enum\Currency as CurrencyEnum;
+use Shared\Domain\Enum\Currency as CurrencyEnum;
 
 class Currency
 {

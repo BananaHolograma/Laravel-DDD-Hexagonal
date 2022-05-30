@@ -5,7 +5,7 @@ namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Identity;
 
 use InvalidArgumentException;
 use Tests\TestCase;
-use Warefy\Shared\Domain\ValueObject\Identity\Email;
+use Shared\Domain\ValueObject\Identity\Email;
 
 class EmailValueObjectTest extends TestCase
 {

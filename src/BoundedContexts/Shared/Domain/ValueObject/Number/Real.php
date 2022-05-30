@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Warefy\Shared\Domain\ValueObject\Number;
+namespace Shared\Domain\ValueObject\Number;
 
 use InvalidArgumentException;
-use Warefy\Shared\Domain\ValueObject\Generic\IntegerValueObject;
+use Shared\Domain\ValueObject\Generic\IntegerValueObject;
 
 class Real
 {

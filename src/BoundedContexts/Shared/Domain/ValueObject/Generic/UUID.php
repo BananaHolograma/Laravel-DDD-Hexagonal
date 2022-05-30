@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Warefy\Shared\Domain\ValueObject\Generic;
+namespace Shared\Domain\ValueObject\Generic;
 
 use InvalidArgumentException;
 use Ramsey\Uuid\Uuid as RamseyUuid;

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Warefy\Shared\Domain\ValueObject\Money;
+namespace Shared\Domain\ValueObject\Money;
 
 use InvalidArgumentException;
-use Warefy\Shared\Domain\Enum\Currency as CurrencyEnum;
-use Warefy\Shared\Domain\ValueObject\Generic\IntegerValueObject;
-use Warefy\Shared\Domain\ValueObject\Generic\StringValueObject;
-use Warefy\Shared\Domain\ValueObject\Number\Real;
+use Shared\Domain\Enum\Currency as CurrencyEnum;
+use Shared\Domain\ValueObject\Generic\IntegerValueObject;
+use Shared\Domain\ValueObject\Generic\StringValueObject;
+use Shared\Domain\ValueObject\Number\Real;
 
 class Money
 {

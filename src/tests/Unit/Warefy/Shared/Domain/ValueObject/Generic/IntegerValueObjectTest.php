@@ -5,7 +5,7 @@ namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Generic;
 
 use Tests\TestCase;
 use TypeError;
-use Warefy\Shared\Domain\ValueObject\Generic\IntegerValueObject;
+use Shared\Domain\ValueObject\Generic\IntegerValueObject;
 
 class IntegerValueObjectTest extends TestCase
 {
@@ -47,7 +47,6 @@ class IntegerValueObjectTest extends TestCase
     public function test_integer_value_object_throws_type_error_when_value_is_not_int(): void
     {
         $this->expectException(TypeError::class);
-
         new IntegerValueObject("not an integer");
     }
 }

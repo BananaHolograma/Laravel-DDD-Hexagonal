@@ -4,7 +4,7 @@ namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Identity;
 
 use InvalidArgumentException;
 use Tests\TestCase;
-use Warefy\Shared\Domain\ValueObject\Identity\Phone;
+use Shared\Domain\ValueObject\Identity\Phone;
 
 class PhoneValueObjectTest extends TestCase
 {

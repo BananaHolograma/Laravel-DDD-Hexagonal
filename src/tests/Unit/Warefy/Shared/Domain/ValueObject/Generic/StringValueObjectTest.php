@@ -4,7 +4,7 @@
 namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Generic;
 
 use Tests\TestCase;
-use Warefy\Shared\Domain\ValueObject\Generic\StringValueObject;
+use Shared\Domain\ValueObject\Generic\StringValueObject;
 
 class StringValueObjectTest extends TestCase
 {

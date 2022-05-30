@@ -4,7 +4,7 @@ namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Number;
 
 use InvalidArgumentException;
 use Tests\TestCase;
-use Warefy\Shared\Domain\ValueObject\Number\Natural;
+use Shared\Domain\ValueObject\Number\Natural;
 
 class NaturalValueObjectTest extends TestCase
 {

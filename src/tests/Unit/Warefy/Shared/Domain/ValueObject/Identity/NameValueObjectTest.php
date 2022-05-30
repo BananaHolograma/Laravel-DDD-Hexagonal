@@ -3,7 +3,7 @@
 namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Identity;
 
 use Tests\TestCase;
-use Warefy\Shared\Domain\ValueObject\Identity\Name;
+use Shared\Domain\ValueObject\Identity\Name;
 
 class NameValueObjectTest extends TestCase
 {

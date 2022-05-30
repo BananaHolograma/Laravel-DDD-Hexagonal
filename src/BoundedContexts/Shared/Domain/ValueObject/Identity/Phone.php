@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Warefy\Shared\Domain\ValueObject\Identity;
+namespace Shared\Domain\ValueObject\Identity;
 
 use InvalidArgumentException;
-use Warefy\Shared\Domain\ValueObject\Generic\StringValueObject;
+use Shared\Domain\ValueObject\Generic\StringValueObject;
 
 class Phone extends StringValueObject
 {

@@ -3,8 +3,8 @@
 namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Money;
 
 use Tests\TestCase;
-use Warefy\Shared\Domain\Enum\Currency as CurrencyEnum;
-use Warefy\Shared\Domain\ValueObject\Money\Currency;
+use Shared\Domain\Enum\Currency as CurrencyEnum;
+use Shared\Domain\ValueObject\Money\Currency;
 
 class CurrencyValueObjectTest extends TestCase
 {

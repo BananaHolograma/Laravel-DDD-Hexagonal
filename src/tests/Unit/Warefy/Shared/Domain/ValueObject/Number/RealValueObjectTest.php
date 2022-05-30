@@ -4,7 +4,7 @@ namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Number;
 
 use InvalidArgumentException;
 use Tests\TestCase;
-use Warefy\Shared\Domain\ValueObject\Number\Real;
+use Shared\Domain\ValueObject\Number\Real;
 
 class RealValueObjectTest extends TestCase
 {
