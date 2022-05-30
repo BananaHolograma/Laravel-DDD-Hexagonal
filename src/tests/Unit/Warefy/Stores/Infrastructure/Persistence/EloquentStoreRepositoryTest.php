@@ -29,6 +29,13 @@ class EloquentStoreRepositoryTest extends TestCase
         $this->assertEquals($id, $store_saved->id());
         $this->assertEquals($name, $store_saved->name());
         $this->assertEquals($url, $store_saved->url());
+    }
 
+    /** @test */
+    public function it_should_return_null_when_store_not_exists(): void
+    {
+        $repository = new EloquentStoreRepository();
+
+        $this->assertNull($repository->search("fake id"));
     }
 }
