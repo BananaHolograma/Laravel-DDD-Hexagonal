@@ -20,15 +20,12 @@ class EloquentStoreRepositoryTest extends TestCase
         $name = $this->faker->company();
         $url =  $this->faker->url();
 
-        $repository->save(new Store($id, $name, $url));
+        $store = new Store($id, $name, $url);
+
+        $repository->save($store);
 
         $this->assertDatabaseHas('stores', ['id' => $id ]);
-
-        $store_saved = $repository->search($id);
-
-        $this->assertEquals($id, $store_saved->id());
-        $this->assertEquals($name, $store_saved->name());
-        $this->assertEquals($url, $store_saved->url());
+        $this->assertEquals($store, $repository->search($id));
     }
 
     /** @test */
