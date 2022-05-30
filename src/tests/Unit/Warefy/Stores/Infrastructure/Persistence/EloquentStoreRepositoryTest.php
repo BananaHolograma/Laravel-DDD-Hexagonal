@@ -4,10 +4,9 @@ namespace Tests\Unit\Warefy\Stores\Infrastructure\Persistence;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Shared\Domain\ValueObject\Generic\UUID;
 use Tests\TestCase;
 use Warefy\Stores\Domain\Store;
-use Warefy\Stores\Domain\ValueObject\StoreId;
+use Warefy\Stores\Domain\StoreId;
 use Warefy\Stores\Infrastructure\Persistence\EloquentStoreRepository;
 
 class EloquentStoreRepositoryTest extends TestCase

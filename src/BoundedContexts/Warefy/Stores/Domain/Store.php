@@ -2,8 +2,6 @@
 
 namespace Warefy\Stores\Domain;
 
-use Warefy\Stores\Domain\ValueObject\StoreId;
-
 class Store
 {
     /**
@@ -15,17 +13,11 @@ class Store
     {
     }
 
-    /**
-     * @return string
-     */
     public function id(): StoreId
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function name(): string
     {
         return $this->name;

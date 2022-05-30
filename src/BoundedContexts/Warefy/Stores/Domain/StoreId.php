@@ -1,6 +1,6 @@
 <?php
 
-namespace Warefy\Stores\Domain\ValueObject;
+namespace Warefy\Stores\Domain;
 
 use Shared\Domain\ValueObject\Generic\UUID;
 

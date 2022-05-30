@@ -2,8 +2,7 @@
 
 namespace Warefy\Stores\Application;
 
-use Shared\Domain\ValueObject\Generic\UUID;
-use Warefy\Stores\Domain\ValueObject\StoreId;
+use Warefy\Stores\Domain\StoreId;
 use Warefy\Stores\Infrastructure\Laravel\Http\Requests\CreateStoreFormRequest;
 
 class CreateStoreDTO

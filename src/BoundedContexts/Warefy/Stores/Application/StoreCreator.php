@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Warefy\Stores\Application;
 
-use Warefy\Stores\Domain\Repositories\StoreRepository;
 use Warefy\Stores\Domain\Store;
+use Warefy\Stores\Domain\StoreRepository;
 
 class StoreCreator {
 

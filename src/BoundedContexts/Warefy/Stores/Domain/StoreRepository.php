@@ -1,8 +1,6 @@
 <?php
 
-namespace Warefy\Stores\Domain\Repositories;
-
-use Warefy\Stores\Domain\Store;
+namespace Warefy\Stores\Domain;
 
 interface StoreRepository {
     public function search(string $id): ?Store;

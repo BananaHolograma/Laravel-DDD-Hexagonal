@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Warefy\Stores\Domain\Repositories\StoreRepository;
+use Warefy\Stores\Domain\StoreRepository;
 use Warefy\Stores\Infrastructure\Persistence\EloquentStoreRepository;
 
 class AppServiceProvider extends ServiceProvider

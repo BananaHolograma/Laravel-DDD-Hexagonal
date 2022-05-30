@@ -1,10 +1,10 @@
 <?php
 namespace Warefy\Stores\Infrastructure\Persistence;
 
-use Warefy\Stores\Domain\Repositories\StoreRepository;
 use Warefy\Stores\Domain\Store;
 use App\Models\Store as StoreEloquentModel;
-use Warefy\Stores\Domain\ValueObject\StoreId;
+use Warefy\Stores\Domain\StoreId;
+use Warefy\Stores\Domain\StoreRepository;
 
 class EloquentStoreRepository implements StoreRepository
 {
