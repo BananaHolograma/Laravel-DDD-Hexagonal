@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Generic;
+namespace Tests\Unit\Shared\Domain\ValueObject\Generic;
 
 use Tests\TestCase;
 use Shared\Domain\ValueObject\Generic\StringValueObject;

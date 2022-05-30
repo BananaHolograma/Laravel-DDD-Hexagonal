@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Money;
+namespace Tests\Unit\Shared\Domain\ValueObject\Money;
 
 use Tests\TestCase;
 use Shared\Domain\Enum\Currency as CurrencyEnum;

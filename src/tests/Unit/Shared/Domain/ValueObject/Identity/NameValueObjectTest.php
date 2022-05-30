@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Warefy\Shared\Domain\ValueObject\Identity;
+namespace Tests\Unit\Shared\Domain\ValueObject\Identity;
 
 use Tests\TestCase;
 use Shared\Domain\ValueObject\Identity\Name;
