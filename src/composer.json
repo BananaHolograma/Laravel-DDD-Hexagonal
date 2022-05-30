@@ -27,9 +27,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Warefy\\Domain\\": "Warefy/Domain",
-            "Warefy\\Application\\": "Warefy/Application",
-            "Warefy\\Infrastructure\\": "Warefy/Infrastructure",
+            "Warefy\\": "BoundedContexts/Warefy/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
