@@ -12,7 +12,8 @@ class CreateStorePutControllerTest extends TestCase
      */
     public function it_should_return_http_status_created(): void
     {
-        $this->putJson(route('api.stores.create', ['id' => UUID::generate()->value()]))
+        $this->putJson(route('api.stores.create', ['id' => UUID::generate()->value()]),
+        ['name' => 'Book shop', 'url' => 'https://bookshop.com'])
             ->assertCreated();
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Warefy\Stores\Domain\Repositories\StoreRepository;
+use Warefy\Stores\Infrastructure\Persistence\EloquentStoreRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,9 +13,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        //
+        $this->app->bind(StoreRepository::class, EloquentStoreRepository::class);
     }
 
     /**
@@ -21,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }
