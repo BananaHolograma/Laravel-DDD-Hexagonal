@@ -2,28 +2,27 @@
 
 namespace Warefy\Stores\Application;
 
-use Warefy\Stores\Domain\StoreId;
-use Warefy\Stores\Infrastructure\Laravel\Http\Requests\CreateStoreFormRequest;
+use Warefy\Stores\Domain\ShopId;
+use Warefy\Stores\Infrastructure\Laravel\Http\Requests\CreateShopFormRequest;
 
-class CreateStoreDTO
+class CreateShopDTO
 {
     public function __construct(
-        private readonly StoreId $id,
+        private readonly ShopId $id,
         private readonly string $name,
         private readonly string $url
     )
     {
-
     }
 
-    public static function fromRequest(string $id, CreateStoreFormRequest $request): self
+    public static function fromRequest(string $id, CreateShopFormRequest $request): self
     {
         $validated = $request->validated();
 
-        return new self(new StoreId($id), $validated['name'], $validated['url']);
+        return new self(new ShopId($id), $validated['name'], $validated['url']);
     }
 
-    public function id(): StoreId
+    public function id(): ShopId
     {
         return $this->id;
     }

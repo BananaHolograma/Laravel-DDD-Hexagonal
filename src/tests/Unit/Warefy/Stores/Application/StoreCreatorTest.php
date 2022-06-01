@@ -4,11 +4,11 @@ namespace Tests\Unit\Warefy\Stores\Application;
 
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Warefy\Stores\Application\CreateStoreDTO;
-use Warefy\Stores\Application\StoreCreator;
-use Warefy\Stores\Domain\Store;
-use Warefy\Stores\Domain\StoreId;
-use Warefy\Stores\Domain\StoreRepository;
+use Warefy\Stores\Application\CreateShopDTO;
+use Warefy\Stores\Application\ShopCreator;
+use Warefy\Stores\Domain\Shop;
+use Warefy\Stores\Domain\ShopId;
+use Warefy\Stores\Domain\ShopRepository;
 
 class StoreCreatorTest extends TestCase
 {
@@ -19,16 +19,16 @@ class StoreCreatorTest extends TestCase
     {
         $this->expectNotToPerformAssertions();
 
-        $id = new StoreId($this->faker->uuid());
+        $id = new ShopId($this->faker->uuid());
         $name = 'store-name';
         $url = 'store-url';
 
-        $store = new Store($id, $name, $url);
+        $store = new Shop($id, $name, $url);
 
-        $repository = $this->createMock(StoreRepository::class);
+        $repository = $this->createMock(ShopRepository::class);
         $repository->method('save')->with($store);
 
-        $creator = new StoreCreator($repository);
-        $creator(new CreateStoreDTO($id, $name, $url));
+        $creator = new ShopCreator($repository);
+        $creator(new CreateShopDTO($id, $name, $url));
     }
 }

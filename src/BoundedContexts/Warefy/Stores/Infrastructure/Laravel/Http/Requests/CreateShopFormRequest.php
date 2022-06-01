@@ -4,7 +4,7 @@ namespace Warefy\Stores\Infrastructure\Laravel\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateStoreFormRequest extends FormRequest
+class CreateShopFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

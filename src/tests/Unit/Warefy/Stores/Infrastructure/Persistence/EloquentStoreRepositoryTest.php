@@ -5,9 +5,9 @@ namespace Tests\Unit\Warefy\Stores\Infrastructure\Persistence;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use Warefy\Stores\Domain\Store;
-use Warefy\Stores\Domain\StoreId;
-use Warefy\Stores\Infrastructure\Persistence\EloquentStoreRepository;
+use Warefy\Stores\Domain\Shop;
+use Warefy\Stores\Domain\ShopId;
+use Warefy\Stores\Infrastructure\Persistence\EloquentShopRepository;
 
 class EloquentStoreRepositoryTest extends TestCase
 {
@@ -15,13 +15,13 @@ class EloquentStoreRepositoryTest extends TestCase
 
     /** @test */
     public function it_should_save_a_valid_store(): void {
-        $repository = new EloquentStoreRepository();
+        $repository = new EloquentShopRepository();
 
-        $id = StoreId::generate();
+        $id = ShopId::generate();
         $name = $this->faker->company();
         $url =  $this->faker->url();
 
-        $store = new Store($id, $name, $url);
+        $store = new Shop($id, $name, $url);
 
         $repository->save($store);
 
@@ -32,7 +32,7 @@ class EloquentStoreRepositoryTest extends TestCase
     /** @test */
     public function it_should_return_null_when_store_not_exists(): void
     {
-        $repository = new EloquentStoreRepository();
+        $repository = new EloquentShopRepository();
 
         $this->assertNull($repository->search("fake id"));
     }

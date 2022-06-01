@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Warefy\Stores\Domain\StoreRepository;
-use Warefy\Stores\Infrastructure\Persistence\EloquentStoreRepository;
+use Warefy\Stores\Domain\ShopRepository;
+use Warefy\Stores\Infrastructure\Persistence\EloquentShopRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(StoreRepository::class, EloquentStoreRepository::class);
+        $this->app->bind(ShopRepository::class, EloquentShopRepository::class);
     }
 
     /**
