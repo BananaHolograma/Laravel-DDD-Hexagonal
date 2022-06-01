@@ -3,7 +3,7 @@
 namespace Warefy\Shops\Application;
 
 use Warefy\Shops\Domain\ShopId;
-use Warefy\Shops\Domain\ShopTitle;
+use Warefy\Shops\Domain\ShopName;
 use Warefy\Shops\Domain\ShopUrl;
 use Warefy\Shops\Infrastructure\Laravel\Http\Requests\CreateShopFormRequest;
 

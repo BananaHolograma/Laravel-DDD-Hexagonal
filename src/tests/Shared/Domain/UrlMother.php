@@ -6,7 +6,7 @@ use Shared\Domain\ValueObject\Web\Url;
 
 class UrlMother
 {
-    public static function create(): Url {
-        return new Url(MotherCreator::random()->unique()->url());
+    public static function create(): string {
+        return MotherCreator::random()->unique()->url();
     }
 }

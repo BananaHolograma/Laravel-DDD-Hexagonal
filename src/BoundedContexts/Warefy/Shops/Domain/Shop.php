@@ -6,10 +6,10 @@ class Shop
 {
     /**
      * @param ShopId $id
-     * @param ShopTitle $name
+     * @param ShopName $name
      * @param ShopUrl $url
      */
-    public function __construct(protected ShopId $id, protected ShopTitle $name, protected ShopUrl $url)
+    public function __construct(protected ShopId $id, protected ShopName $name, protected ShopUrl $url)
     {
     }
 
@@ -18,7 +18,7 @@ class Shop
         return $this->id;
     }
 
-    public function name(): ShopTitle
+    public function name(): ShopName
     {
         return $this->name;
     }
