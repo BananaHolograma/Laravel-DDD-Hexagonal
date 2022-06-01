@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Warefy\Stores\Domain\ShopRepository;
-use Warefy\Stores\Infrastructure\Persistence\EloquentShopRepository;
+use Warefy\Shops\Domain\ShopRepository;
+use Warefy\Shops\Infrastructure\Persistence\EloquentShopRepository;
 
 class AppServiceProvider extends ServiceProvider
 {

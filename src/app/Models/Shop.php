@@ -10,7 +10,7 @@ class Shop extends Model
 {
     use HasFactory, HasUuid;
 
-    protected $table = 'stores';
+    protected $table = 'shops';
 
     protected $fillable = ['id', 'name', 'url'];
 
