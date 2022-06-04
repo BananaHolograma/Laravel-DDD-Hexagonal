@@ -7,8 +7,8 @@ use Warefy\Shops\Domain\ShopUrl;
 
 class ShopUrlMother
 {
-    public static function create(): ShopUrl
+    public static function create(?string $shop_url = null): ShopUrl
     {
-        return new ShopUrl(UrlMother::create());
+        return new ShopUrl($shop_url ?? UrlMother::create());
     }
 }

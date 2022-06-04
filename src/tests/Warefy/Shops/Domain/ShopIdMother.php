@@ -7,8 +7,8 @@ use Warefy\Shops\Domain\ShopId;
 
 class ShopIdMother
 {
-    public static function create(): ShopId
+    public static function create(?string $shop_id = null): ShopId
     {
-        return new ShopId(UuidMother::create());
+        return new ShopId($shop_id ?? UuidMother::create());
     }
 }

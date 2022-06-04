@@ -2,24 +2,33 @@
 
 namespace Tests\Warefy\Shops\Application;
 
-use Tests\TestCase;
 use Tests\Warefy\Shops\Domain\ShopMother;
+use Tests\Warefy\Shops\Infrastructure\ShopModuleUnitTestCase;
 use Warefy\Shops\Application\ShopCreator;
-use Warefy\Shops\Domain\ShopRepository;
 
-class ShopCreatorTest extends TestCase
+
+class ShopCreatorTest extends ShopModuleUnitTestCase
 {
+    private ShopCreator $creator;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->creator = new ShopCreator($this->repository());
+    }
+
     /** @test */
     public function it_should_creates_a_valid_store(): void
     {
         $this->expectNotToPerformAssertions();
 
-        $shop = ShopMother::create();
+        $dto = CreateShopDTOMother::create();
+        $shop = ShopMother::fromDTO($dto);
 
-        $repository = $this->createMock(ShopRepository::class);
-        $repository->method('save')->with($shop);
+        $this->shouldSave($shop);
 
-        $creator = new ShopCreator($repository);
-        $creator(CreateShopDTOMother::create($shop->id(), $shop->name(), $shop->url()));
+        ($this->creator)($dto);
     }
+
 }

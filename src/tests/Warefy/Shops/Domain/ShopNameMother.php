@@ -7,7 +7,7 @@ use Warefy\Shops\Domain\ShopName;
 
 class ShopNameMother
 {
-    public static function create(): ShopName {
-        return new ShopName(CompanyNameMother::create());
+    public static function create(?string $shop_name = null): ShopName {
+        return new ShopName($shop_name ?? CompanyNameMother::create());
     }
 }
