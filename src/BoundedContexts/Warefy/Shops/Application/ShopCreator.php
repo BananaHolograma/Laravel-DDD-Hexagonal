@@ -18,9 +18,9 @@ class ShopCreator {
 
     public function __invoke(CreateShopDTO $request): void
     {
-        $store = new Shop(new ShopId($request->id()), new ShopName($request->name()), new ShopUrl($request->url()));
+        $shop = new Shop(new ShopId($request->id()), new ShopName($request->name()), new ShopUrl($request->url()));
 
-        $this->repository->save($store);
+        $this->repository->save($shop);
     }
 
 }

@@ -2,7 +2,7 @@
 namespace Warefy\Shops\Infrastructure\Persistence;
 
 use Warefy\Shops\Domain\Shop;
-use App\Models\Shop as ShopEloquentModel;
+use App\Models\ShopEloquentModel;
 use Warefy\Shops\Domain\ShopId;
 use Warefy\Shops\Domain\ShopName;
 use Warefy\Shops\Domain\ShopRepository;
@@ -25,4 +25,5 @@ class EloquentShopRepository implements ShopRepository
   {
       ShopEloquentModel::create(['id' => $shop->id()->value(), 'name' => $shop->name()->value(), 'url' => $shop->url()->value()]);
   }
+
 }
